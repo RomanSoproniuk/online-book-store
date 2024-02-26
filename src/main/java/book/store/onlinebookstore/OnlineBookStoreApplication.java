@@ -1,15 +1,13 @@
 package book.store.onlinebookstore;
 
 import book.store.onlinebookstore.model.Book;
-import book.store.onlinebookstore.repository.BookRepository;
 import book.store.onlinebookstore.service.BookService;
+import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import java.math.BigDecimal;
 
 @SpringBootApplication
 public class OnlineBookStoreApplication {

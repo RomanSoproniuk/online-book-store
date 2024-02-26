@@ -3,13 +3,12 @@ package book.store.onlinebookstore.repository.impl;
 import book.store.onlinebookstore.exceptions.DataProcessingException;
 import book.store.onlinebookstore.model.Book;
 import book.store.onlinebookstore.repository.BookRepository;
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public class BookRepositoryImpl implements BookRepository {
@@ -44,7 +43,7 @@ public class BookRepositoryImpl implements BookRepository {
 
     @Override
     public List<Book> findAll() {
-        try(Session session = sessionFactory.openSession()) {
+        try (Session session = sessionFactory.openSession()) {
             Query<Book> bookQuery = session.createQuery("SELECT * FROM Book b", Book.class);
             return bookQuery.getResultList();
         } catch (Exception e) {
