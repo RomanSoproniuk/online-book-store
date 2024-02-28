@@ -2,6 +2,7 @@ package book.store.onlinebookstore.service.impl;
 
 import book.store.onlinebookstore.dto.BookDto;
 import book.store.onlinebookstore.dto.CreateBookRequestDto;
+import book.store.onlinebookstore.exceptions.EntityNotFoundException;
 import book.store.onlinebookstore.mapper.BookMapper;
 import book.store.onlinebookstore.model.Book;
 import book.store.onlinebookstore.repository.BookRepository;
@@ -27,5 +28,11 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findAll().stream()
                 .map(bookMapper::toDto)
                 .toList();
+    }
+
+    @Override
+    public BookDto findById(Long id) {
+        return bookMapper.toDto(bookRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Can't find book by id: " + id)));
     }
 }
