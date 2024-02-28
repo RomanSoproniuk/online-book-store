@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import java.math.BigDecimal;
 import lombok.Data;
 
-@Entity
+@Entity(name = "books")
 @Data
 public class Book {
     @Id
@@ -16,7 +16,7 @@ public class Book {
     private Long id;
     @Column(name = "title", nullable = false)
     private String title;
-    @Column(name = "author",nullable = false)
+    @Column(name = "author",nullable = false, unique = true)
     private String author;
     @Column(name = "isbn",nullable = false)
     private String isbn;
