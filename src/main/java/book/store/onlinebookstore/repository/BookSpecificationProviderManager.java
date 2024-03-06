@@ -1,8 +1,11 @@
 package book.store.onlinebookstore.repository;
 
 import book.store.onlinebookstore.exceptions.DataProcessingException;
+import book.store.onlinebookstore.exceptions.EntityNotFoundException;
 import book.store.onlinebookstore.model.Book;
 import java.util.List;
+import java.util.NoSuchElementException;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +19,7 @@ public class BookSpecificationProviderManager implements SpecificationProviderMa
         return bookSpecificationProviderList.stream()
                 .filter(provider -> provider.getKey().equals(key))
                 .findFirst().orElseThrow(() ->
-                        new DataProcessingException("Can't find specification "
+                        new EntityNotFoundException("Can't find specification "
                         + "provider by key " + key));
     }
 }
