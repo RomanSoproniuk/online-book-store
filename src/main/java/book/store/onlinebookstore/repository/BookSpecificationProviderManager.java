@@ -1,11 +1,8 @@
 package book.store.onlinebookstore.repository;
 
-import book.store.onlinebookstore.exceptions.DataProcessingException;
 import book.store.onlinebookstore.exceptions.EntityNotFoundException;
 import book.store.onlinebookstore.model.Book;
 import java.util.List;
-import java.util.NoSuchElementException;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
