@@ -48,7 +48,8 @@ public class BookController {
         return bookService.search(searchParameters);
     }
 
-    @Operation(summary = "Add book to repository", description = "You can add the book to repository")
+    @Operation(summary = "Add book to repository", description = "You can add "
+            + "the book to repository")
     @PostMapping
     public BookDto createBook(@RequestBody @Valid CreateBookRequestDto bookRequestDto) {
         return bookService.save(bookRequestDto);
