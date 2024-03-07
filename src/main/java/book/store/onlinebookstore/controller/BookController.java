@@ -1,6 +1,7 @@
 package book.store.onlinebookstore.controller;
 
 import book.store.onlinebookstore.dto.BookDto;
+import book.store.onlinebookstore.dto.BookSearchParametersDto;
 import book.store.onlinebookstore.dto.CreateBookRequestDto;
 import book.store.onlinebookstore.service.BookService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -41,8 +42,13 @@ public class BookController {
         return bookService.findById(id);
     }
 
-    @Operation(summary = "Add a book to the repository", description = "You can add a specific "
-            + "book with the required parameters to the repository")
+    @Operation(summary = "Search book", description = "You can find the book by parameters")
+    @GetMapping("/search")
+    public List<BookDto> searchBooks(BookSearchParametersDto searchParameters) {
+        return bookService.search(searchParameters);
+    }
+
+    @Operation(summary = "Add book to repository", description = "You can add the book to repository")
     @PostMapping
     public BookDto createBook(@RequestBody @Valid CreateBookRequestDto bookRequestDto) {
         return bookService.save(bookRequestDto);
