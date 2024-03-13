@@ -7,10 +7,9 @@ import book.store.onlinebookstore.mapper.UserMapper;
 import book.store.onlinebookstore.model.User;
 import book.store.onlinebookstore.repository.UserRepository;
 import book.store.onlinebookstore.service.UserService;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

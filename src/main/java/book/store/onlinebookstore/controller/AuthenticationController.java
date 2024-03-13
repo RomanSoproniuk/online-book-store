@@ -22,6 +22,6 @@ public class AuthenticationController {
                                             @Validated
                                             UserRegistrationRequestDto userRegistrationRequestDto)
             throws RegistrationException {
-        return userService.authenticate(userRegistrationRequestDto);
+        return userService.register(userRegistrationRequestDto);
     }
 }
