@@ -10,6 +10,8 @@ import book.store.onlinebookstore.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -17,11 +19,15 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
 
     @Override
-    public UserResponseDto authenticate(UserRegistrationRequestDto userRegistrationRequestDto)
+    public UserResponseDto register(UserRegistrationRequestDto userRegistrationRequestDto)
             throws RegistrationException {
         String userEmail = userRegistrationRequestDto.getEmail();
-        User user = userRepository.findByEmail(userEmail).orElseThrow(() ->
-                new RegistrationException("User by email " + userEmail + " is not already exists"));
-        return userMapper.toDto(user);
+        Optional<User> existingUser = userRepository.findByEmail(userEmail);
+        if (existingUser.isPresent()) {
+            throw new RegistrationException("User by email " + userEmail + " already exists");
+        }
+        User user = userMapper.toModel(userRegistrationRequestDto);
+        User savedUser = userRepository.save(user);
+        return userMapper.toDto(savedUser);
     }
 }
