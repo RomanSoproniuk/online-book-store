@@ -11,13 +11,14 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
 public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler {
     private static final String TIMESTAMP_PARAM = "timestamp";
-    private static final String HTTP_STATUS_PARAM = "timestamp";
+    private static final String HTTP_STATUS_PARAM = "http_status";
     private static final String ERRORS_PARAM = "errors";
 
     @Override
@@ -42,5 +43,16 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
             return field + " " + message;
         }
         return objectError.getDefaultMessage();
+    }
+
+    @ExceptionHandler(value = RegistrationException.class)
+    public ResponseEntity<Object> handleConflict(Exception exception, WebRequest webRequest) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put(TIMESTAMP_PARAM, LocalDateTime.now());
+        body.put(HTTP_STATUS_PARAM, HttpStatus.BAD_REQUEST);
+        body.put(ERRORS_PARAM, exception.getMessage());
+        return handleExceptionInternal(exception, body,
+                new HttpHeaders(),
+                HttpStatus.BAD_REQUEST, webRequest);
     }
 }
