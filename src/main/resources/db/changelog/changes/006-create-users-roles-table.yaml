@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0
+      author: admin
+      changes:
+        - createTable:
+            tableName: users_roles
+            columns:
+              - column:
+                  name: users_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: users.id
+              - column:
+                  name: roles_id
+                  type: bigint
+                  constraints:
+                   nullable: false
+                   foreignKeyName: roles.id
