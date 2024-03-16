@@ -25,11 +25,6 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: repeated_password
-                  type: varchar(255)
-                  constraints:
-                    nullable: false
-              - column:
                   name: first_name
                   type: varchar(255)
                   constraints:
@@ -42,3 +37,9 @@ databaseChangeLog:
               - column:
                   name: shipping_address
                   type: varchar(455)
+              - column:
+                  name: is_deleted
+                  type: boolean
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false

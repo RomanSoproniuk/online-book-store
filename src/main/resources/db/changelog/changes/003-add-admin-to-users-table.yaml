@@ -1,6 +1,23 @@
 databaseChangeLog:
   - changeSet:
-      id: 0
-      author: admin
+      id: add-admin-to-users-table
+      author: Roman Soproniuk
       changes:
-        -
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  value: "1"
+              - column:
+                  name: email
+                  value: "admin@gmail.com"
+              - column:
+                  name: password
+                  value: "$2a$10$BOaxBAnY9cPRNt6P/gDHjOqJGqzLAHVSKoC3m6JRPsWX3AnK4zEBe"
+              - column:
+                  name: first_name
+                  value: "Roman"
+              - column:
+                  name: last_name
+                  value: "Soproniuk"

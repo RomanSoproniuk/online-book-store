@@ -33,7 +33,6 @@ databaseChangeLog:
                   name: price
                   type: bigint
                   constraints:
-                    unique: true
                     nullable: false
               - column:
                   name: description
