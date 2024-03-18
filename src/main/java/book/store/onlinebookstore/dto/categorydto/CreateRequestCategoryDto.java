@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotNull;
 
 public record CreateRequestCategoryDto(
         Long id,
-        @NotNull
         @NotEmpty
         String name,
         String description
