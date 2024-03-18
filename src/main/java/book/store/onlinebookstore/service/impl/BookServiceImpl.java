@@ -1,6 +1,7 @@
 package book.store.onlinebookstore.service.impl;
 
 import book.store.onlinebookstore.dto.bookdto.BookDto;
+import book.store.onlinebookstore.dto.bookdto.BookDtoWithoutCategoryIds;
 import book.store.onlinebookstore.dto.bookdto.BookSearchParametersDto;
 import book.store.onlinebookstore.dto.bookdto.CreateBookRequestDto;
 import book.store.onlinebookstore.exceptions.EntityNotFoundException;
@@ -24,7 +25,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public BookDto save(CreateBookRequestDto bookRequestDto) {
-        Book book = bookMapper.toModel(bookRequestDto);
+        Book book = bookMapper.toEntity(bookRequestDto);
         return bookMapper.toDto(bookRepository.save(book));
     }
 
@@ -48,7 +49,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public BookDto update(Long id, CreateBookRequestDto bookRequestDto) {
-        Book book = bookMapper.toModel(bookRequestDto);
+        Book book = bookMapper.toEntity(bookRequestDto);
         book.setId(id);
         return bookMapper.toDto(bookRepository.save(book));
     }
@@ -59,6 +60,14 @@ public class BookServiceImpl implements BookService {
         List<Book> bookRepositoryAll = bookRepository.findAll(bookSpecification);
         return bookRepositoryAll.stream()
                 .map(bookMapper::toDto)
+                .toList();
+    }
+
+    @Override
+    public List<BookDtoWithoutCategoryIds> getAllByCategoriesId(Pageable pageable,
+                                                                Long categoryId) {
+        return bookRepository.findAllByCategoriesId(pageable, categoryId).stream()
+                .map(bookMapper::toDtoWithoutCategoryIds)
                 .toList();
     }
 }

@@ -13,3 +13,7 @@ databaseChangeLog:
       file: db/changelog/changes/006-create-users-roles-table.yaml
   - include:
       file: db/changelog/changes/007-add-userid-and-rolesid-to-user-roles-table.yaml
+  - include:
+      file: db/changelog/changes/008-create-categories-table.yaml
+  - include:
+      file: db/changelog/changes/009-create-books-categories-table.yaml

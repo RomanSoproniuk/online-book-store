@@ -1,2 +1,7 @@
-package book.store.onlinebookstore.repository;public interface CategoryRepository {
+package book.store.onlinebookstore.repository;
+
+import book.store.onlinebookstore.model.Category;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CategoryRepository extends JpaRepository<Category, Long> {
 }
