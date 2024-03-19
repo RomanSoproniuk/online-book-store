@@ -1,2 +1,12 @@
-package book.store.onlinebookstore.repository.shoppingcart;public interface ShoppingCartRepository {
+package book.store.onlinebookstore.repository.shoppingcart;
+
+import book.store.onlinebookstore.model.ShoppingCart;
+import java.util.Optional;
+
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ShoppingCartRepository extends JpaRepository<ShoppingCart, Long> {
+
+    Optional<ShoppingCart> findByUserEmail(String userEmail);
 }
