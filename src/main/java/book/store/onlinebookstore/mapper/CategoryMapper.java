@@ -1,8 +1,8 @@
 package book.store.onlinebookstore.mapper;
 
 import book.store.onlinebookstore.config.MapperConfig;
-import book.store.onlinebookstore.dto.categorydto.CategoryDto;
-import book.store.onlinebookstore.dto.categorydto.CreateRequestCategoryDto;
+import book.store.onlinebookstore.dto.CategoryDto;
+import book.store.onlinebookstore.dto.CreateRequestCategoryDto;
 import book.store.onlinebookstore.model.Category;
 import org.mapstruct.Mapper;
 

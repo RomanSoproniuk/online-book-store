@@ -20,7 +20,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity(name = "users")
 @Getter
 @Setter
-@SQLDelete(sql = "UPDATE users SET is_delete = true WHERE id=?")
+@SQLDelete(sql = "UPDATE users SET is_delete = TRUE WHERE id = ?")
 @SQLRestriction("is_deleted=false")
 public class User implements UserDetails {
     private static final String PREFIX_ROLE = "ROLE_";
