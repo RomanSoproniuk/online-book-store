@@ -1,4 +1,4 @@
-package book.store.onlinebookstore.dto.cartitemdto;
+package book.store.onlinebookstore.dto;
 
 import lombok.Getter;
 import lombok.Setter;

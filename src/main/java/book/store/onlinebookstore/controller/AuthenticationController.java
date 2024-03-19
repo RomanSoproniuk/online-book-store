@@ -1,9 +1,9 @@
 package book.store.onlinebookstore.controller;
 
-import book.store.onlinebookstore.dto.userdto.UserLoginRequestDto;
-import book.store.onlinebookstore.dto.userdto.UserLoginResponseDto;
-import book.store.onlinebookstore.dto.userdto.UserRegistrationRequestDto;
-import book.store.onlinebookstore.dto.userdto.UserResponseDto;
+import book.store.onlinebookstore.dto.UserLoginRequestDto;
+import book.store.onlinebookstore.dto.UserLoginResponseDto;
+import book.store.onlinebookstore.dto.UserRegistrationRequestDto;
+import book.store.onlinebookstore.dto.UserResponseDto;
 import book.store.onlinebookstore.exceptions.RegistrationException;
 import book.store.onlinebookstore.security.AuthenticationService;
 import book.store.onlinebookstore.service.UserService;

@@ -1,4 +1,4 @@
-package book.store.onlinebookstore.dto.userdto;
+package book.store.onlinebookstore.dto;
 
 public record UserLoginResponseDto(String token) {
 }

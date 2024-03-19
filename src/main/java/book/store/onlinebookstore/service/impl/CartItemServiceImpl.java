@@ -1,7 +1,7 @@
 package book.store.onlinebookstore.service.impl;
 
-import book.store.onlinebookstore.dto.cartitemdto.CartItemRequestDto;
-import book.store.onlinebookstore.dto.cartitemdto.CartItemUpdateRequestDto;
+import book.store.onlinebookstore.dto.CartItemRequestDto;
+import book.store.onlinebookstore.dto.CartItemUpdateRequestDto;
 import book.store.onlinebookstore.exceptions.EntityNotFoundException;
 import book.store.onlinebookstore.mapper.CartItemMapper;
 import book.store.onlinebookstore.model.CartItem;

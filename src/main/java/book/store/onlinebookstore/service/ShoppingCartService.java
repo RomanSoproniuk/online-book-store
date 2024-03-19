@@ -1,6 +1,6 @@
 package book.store.onlinebookstore.service;
 
-import book.store.onlinebookstore.dto.shoppingcartdto.ShoppingCartResponseDto;
+import book.store.onlinebookstore.dto.ShoppingCartResponseDto;
 import java.security.Principal;
 import org.springframework.data.domain.Pageable;
 
