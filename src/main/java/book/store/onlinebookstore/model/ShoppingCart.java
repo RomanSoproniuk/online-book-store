@@ -26,9 +26,9 @@ public class ShoppingCart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @PrimaryKeyJoinColumn
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private User user;
-    @OneToMany(mappedBy = "shoppingCart", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "shoppingCart", fetch = FetchType.LAZY)
     private Set<CartItem> cartItems = new HashSet<>();
     @Column(name = "is_deleted", nullable = false)
     private boolean isDeleted = false;

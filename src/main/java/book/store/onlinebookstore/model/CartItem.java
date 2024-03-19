@@ -2,6 +2,7 @@ package book.store.onlinebookstore.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,9 +24,9 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @JoinColumn(name = "shopping_cart_id",nullable = false)
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private ShoppingCart shoppingCart;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private Book book;
     @Column(nullable = false)
     private int quantity;

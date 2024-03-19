@@ -5,10 +5,9 @@ import book.store.onlinebookstore.dto.cartitemdto.CartItemUpdateRequestDto;
 import book.store.onlinebookstore.dto.shoppingcartdto.ShoppingCartResponseDto;
 import book.store.onlinebookstore.service.CartItemService;
 import book.store.onlinebookstore.service.ShoppingCartService;
-import java.security.Principal;
-
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import java.security.Principal;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -33,10 +32,8 @@ public class ShoppingCartController {
 
     @GetMapping
     @Operation(summary = "Retrieve user's shopping cart", description = "You can "
-            + "get a shopping cart and your sorted books, "
-            + "and limit the number of copies to one page.")
-    public ShoppingCartResponseDto getShoppingCartByUser(Pageable pageable,
-                                                         Principal principal) {
+            + "get a shopping cart and your books in shopping cart.")
+    public ShoppingCartResponseDto getShoppingCartByUser(Pageable pageable,Principal principal) {
         return shoppingCartService.getShoppingCartByUser(pageable, principal);
     }
 
