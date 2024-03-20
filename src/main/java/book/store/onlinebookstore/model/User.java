@@ -9,7 +9,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import java.util.Collection;
 import java.util.Set;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,8 +18,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity(name = "users")
-@Data
-@SQLDelete(sql = "UPDATE users SET is_delete = true WHERE id=?")
+@Getter
+@Setter
+@SQLDelete(sql = "UPDATE users SET is_delete = TRUE WHERE id = ?")
 @SQLRestriction("is_deleted=false")
 public class User implements UserDetails {
     private static final String PREFIX_ROLE = "ROLE_";

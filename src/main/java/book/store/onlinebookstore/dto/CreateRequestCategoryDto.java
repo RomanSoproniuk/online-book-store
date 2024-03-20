@@ -1,11 +1,9 @@
-package book.store.onlinebookstore.dto.categorydto;
+package book.store.onlinebookstore.dto;
 
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 
 public record CreateRequestCategoryDto(
         Long id,
-        @NotNull
         @NotEmpty
         String name,
         String description
