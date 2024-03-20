@@ -1,6 +1,7 @@
 package book.store.onlinebookstore.service;
 
 import book.store.onlinebookstore.dto.OrderItemResponseDto;
+import java.security.Principal;
 import java.util.Set;
 import org.springframework.data.domain.Pageable;
 
@@ -11,9 +12,11 @@ public interface OrderItemService {
 
     Set<OrderItemResponseDto> getAllOrderItemsByOrderId(
             Long orderId,
-            Pageable pageable);
+            Pageable pageable,
+            Principal principal);
 
     OrderItemResponseDto getSpecificOrderItemByOrderAndOrderItemIds(
             Long orderId,
-            Long itemId);
+            Long itemId,
+            Principal principal);
 }

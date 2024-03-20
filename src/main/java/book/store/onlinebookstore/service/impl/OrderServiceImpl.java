@@ -51,7 +51,7 @@ public class OrderServiceImpl implements OrderService {
                 .map(orderMapper::toDto)
                 .collect(Collectors.toSet());
         mappedOrders.forEach(m -> m.setOrderItems(orderItemService
-                .getAllOrderItemsByOrderId(m.getId(), pageable)))
+                .getAllOrderItemsByOrderId(m.getId(), pageable, principal)))
         ;
         return mappedOrders;
     }
@@ -80,6 +80,8 @@ public class OrderServiceImpl implements OrderService {
                 .findAllByShoppingCartId(shoppingCart.getId(), pageable).stream()
                 .map(orderItemMapper::toOrderItemFromCartItemDto)
                 .collect(Collectors.toSet());
+        shoppingCart.getCartItems().stream()
+                .forEach(t -> cartItemRepository.deleteById(t.getId()));
         model.setOrderItems(orderItems);
         addPriceToOrderItem(orderItems);
         double totalPrice = getTotalPrice(orderItems);

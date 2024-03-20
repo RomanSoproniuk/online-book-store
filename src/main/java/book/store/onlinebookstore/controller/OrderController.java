@@ -43,8 +43,10 @@ public class OrderController {
     @GetMapping("/{orderId}/items")
     public Set<OrderItemResponseDto> getAllOrderItemsByOrderId(
             @PathVariable
-            Long orderId, Pageable pageable) {
-        return orderItemService.getAllOrderItemsByOrderId(orderId, pageable);
+            Long orderId,
+            Pageable pageable,
+            Principal principal) {
+        return orderItemService.getAllOrderItemsByOrderId(orderId, pageable, principal);
     }
 
     @Operation(summary = "Get specific order item for specific order", description = "You can get "
@@ -52,8 +54,10 @@ public class OrderController {
     @GetMapping("/{orderId}/items/{itemId}")
     public OrderItemResponseDto getSpecificOrderItemByOrderAndOrderItemIds(
             @PathVariable Long orderId,
-             @PathVariable Long itemId) {
-        return orderItemService.getSpecificOrderItemByOrderAndOrderItemIds(orderId, itemId);
+             @PathVariable Long itemId,
+            Principal principal) {
+        return orderItemService.getSpecificOrderItemByOrderAndOrderItemIds(orderId,
+                itemId, principal);
     }
 
     @Operation(summary = "You can place order", description = "You can make order input specific"
