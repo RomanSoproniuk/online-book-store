@@ -25,4 +25,12 @@ public class Category {
     @Column (name = "is_deleted", nullable = false)
     private boolean isDeleted = false;
 
+    public Category() {
+    }
+
+    public Category(Long id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
 }

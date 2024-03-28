@@ -1,3 +1,6 @@
+TRUNCATE TABLE books;
+TRUNCATE TABLE categories;
+TRUNCATE TABLE books_categories;
 INSERT INTO books (id, title, author, price, isbn)
 VALUES (1, 'Kobzar', 'Shevchenko', 50, '3ih3348wjew');
 INSERT INTO categories(id, name) VALUES (1, 'UkrLiteratura');

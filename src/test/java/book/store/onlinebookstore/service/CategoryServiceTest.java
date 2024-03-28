@@ -37,7 +37,6 @@ public class CategoryServiceTest {
     private CategoryDto firstCategoryDto;
     private CategoryDto secondCategoryDto;
 
-
     @BeforeEach
     public void setUp() {
         firstCategory = new Category();
@@ -64,7 +63,8 @@ public class CategoryServiceTest {
             """)
     public void findAll_ReturnAllCategory_ShouldReturnAllCategories() {
         //given
-        Page<Category> categoryPage = new PageImpl<>(List.of(firstCategory, secondCategory), pageable, 5);
+        Page<Category> categoryPage
+                = new PageImpl<>(List.of(firstCategory, secondCategory), pageable, 5);
         Mockito.when(categoryRepository.findAll(pageable)).thenReturn(categoryPage);
         Mockito.when(categoryMapper.toDto(firstCategory)).thenReturn(firstCategoryDto);
         Mockito.when(categoryMapper.toDto(secondCategory)).thenReturn(secondCategoryDto);
@@ -97,7 +97,8 @@ public class CategoryServiceTest {
         //given
         CategoryDto actualCategory = firstCategoryDto;
         Long categoryId = 1L;
-        Mockito.when(categoryRepository.findById(categoryId)).thenReturn(Optional.of(firstCategory));
+        Mockito.when(categoryRepository.findById(categoryId))
+                .thenReturn(Optional.of(firstCategory));
         Mockito.when(categoryMapper.toDto(firstCategory)).thenReturn(firstCategoryDto);
         //when
         CategoryDto expectedCategory = categoryService.getById(categoryId);
@@ -130,19 +131,14 @@ public class CategoryServiceTest {
             """)
     public void save_ReturnCorrectCategoryAfterSaving_ShouldCategoryWithSameValue() {
         //given
-        CreateRequestCategoryDto categoryDto = new CreateRequestCategoryDto(
-                1L,
-                "Fantastic",
+        CreateRequestCategoryDto categoryDto = new CreateRequestCategoryDto(1L, "Fantastic",
                 "Awesome");
-        Category category = new Category();
-        category.setId(1L);
-        category.setName("Fantastic");
-        category.setDescription("Awesome");
+        Category category = new Category(1L,"Fantastic", "Awesome");
+        Mockito.when(categoryMapper.toEntity(categoryDto)).thenReturn(category);
         CategoryDto categoryDtoResponse = new CategoryDto();
         categoryDtoResponse.setId(1L);
         categoryDtoResponse.setName("Fantastic");
         categoryDtoResponse.setDescription("Awesome");
-        Mockito.when(categoryMapper.toEntity(categoryDto)).thenReturn(category);
         Mockito.when(categoryRepository.save(category)).thenReturn(category);
         Mockito.when(categoryMapper.toDto(category)).thenReturn(categoryDtoResponse);
         Long expectId = 1L;
@@ -172,16 +168,16 @@ public class CategoryServiceTest {
                 "Non Fiction",
                 "Interesting"
         );
-        CategoryDto expectedDto = new CategoryDto();
+        Mockito.when(categoryMapper.toEntity(categoryDto)).thenReturn(firstCategory);
         firstCategory.setId(categoryId);
         firstCategory.setName("Non Fiction");
         firstCategory.setDescription("Interesting");
+        CategoryDto expectedDto = new CategoryDto();
         expectedDto.setId(categoryId);
         expectedDto.setName("Non Fiction");
         expectedDto.setDescription("Interesting");
-        Mockito.when(categoryMapper.toEntity(categoryDto)).thenReturn(firstCategory);
-        Mockito.when(categoryRepository.save(firstCategory)).thenReturn(firstCategory);
         Mockito.when(categoryMapper.toDto(firstCategory)).thenReturn(expectedDto);
+        Mockito.when(categoryRepository.save(firstCategory)).thenReturn(firstCategory);
         //when
         CategoryDto actualDto = categoryService.update(categoryId, categoryDto);
         //then

@@ -2,22 +2,14 @@ package book.store.onlinebookstore.service;
 
 import book.store.onlinebookstore.dto.BookDto;
 import book.store.onlinebookstore.dto.BookDtoWithoutCategoryIds;
-import book.store.onlinebookstore.dto.BookSearchParametersDto;
 import book.store.onlinebookstore.dto.CreateBookRequestDto;
 import book.store.onlinebookstore.mapper.BookMapper;
 import book.store.onlinebookstore.model.Book;
 import book.store.onlinebookstore.repository.BookRepository;
-import book.store.onlinebookstore.repository.BookSpecificationBuilder;
-import book.store.onlinebookstore.repository.SpecificationBuilder;
 import book.store.onlinebookstore.service.impl.BookServiceImpl;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
-
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -31,7 +23,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 
 @ExtendWith(MockitoExtension.class)
 public class BookServiceTest {
@@ -39,8 +30,6 @@ public class BookServiceTest {
     private BookRepository bookRepository;
     @Mock
     private BookMapper bookMapper;
-    @Mock
-    private BookSpecificationBuilder specificationBuilder;
     @InjectMocks
     private BookServiceImpl bookService;
     private final Pageable pageable = PageRequest.of(1, 2);
@@ -53,8 +42,7 @@ public class BookServiceTest {
     private BookDto expectedDto;
     private BookDto secondExpectedDto;
     private BookDtoWithoutCategoryIds expectedDtoWithOutCategory;
-    BookDtoWithoutCategoryIds expectedSecondDtoWithOutCategory;
-
+    private BookDtoWithoutCategoryIds expectedSecondDtoWithOutCategory;
 
     @BeforeEach
     public void setUp() {
@@ -187,14 +175,13 @@ public class BookServiceTest {
         Assertions.assertEquals(secondExpectedDto.getId(), actualBookRequestDto.getId());
         Assertions.assertEquals(secondExpectedDto.getTitle(), actualBookRequestDto.getTitle());
         Assertions.assertEquals(secondExpectedDto.getAuthor(), actualBookRequestDto.getAuthor());
-
     }
 
     @Test
     @DisplayName("""
             Verify if return correct book by categories id
             """)
-    public  void getAllByCategoriesId_GetAllBookByCategoryId_ReturnCorrectBook() {
+    public void getAllByCategoriesId_GetAllBookByCategoryId_ReturnCorrectBook() {
         //given
         Long categoryId = 1L;
         Mockito.when(bookRepository.findAllByCategoriesId(pageable, categoryId))
