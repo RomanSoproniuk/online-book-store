@@ -14,4 +14,14 @@ public class BookDtoWithoutCategoryIds {
     private BigDecimal price;
     private String description;
     private String coverImage;
+
+    public BookDtoWithoutCategoryIds() {
+    }
+
+    public BookDtoWithoutCategoryIds(Long id, String author, String title, BigDecimal price) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.price = price;
+    }
 }

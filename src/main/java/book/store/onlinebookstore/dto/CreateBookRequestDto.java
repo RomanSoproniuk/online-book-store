@@ -32,4 +32,13 @@ public class CreateBookRequestDto {
     @NotNull
     @NotEmpty
     private String coverImage;
+
+    public CreateBookRequestDto() {
+    }
+
+    public CreateBookRequestDto(String title, String author, BigDecimal price) {
+        this.title = title;
+        this.author = author;
+        this.price = price;
+    }
 }

@@ -17,4 +17,14 @@ public class BookDto {
     private String description;
     private String coverImage;
     private Set<Category> categories;
+
+    public BookDto() {
+    }
+
+    public BookDto(Long id, String title, String author, BigDecimal price) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.price = price;
+    }
 }

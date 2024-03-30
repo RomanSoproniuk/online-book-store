@@ -40,4 +40,20 @@ public class Book {
     private boolean isDeleted = false;
     @ManyToMany(fetch = FetchType.LAZY)
     private Set<Category> categories = new HashSet<>();
+
+    public Book() {
+    }
+
+    public Book(String title, String author, BigDecimal price) {
+        this.title = title;
+        this.author = author;
+        this.price = price;
+    }
+
+    public Book(Long id, String title, String author, BigDecimal price) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.price = price;
+    }
 }

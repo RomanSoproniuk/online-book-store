@@ -1,6 +1,7 @@
 package book.store.onlinebookstore.repository;
 
 import book.store.onlinebookstore.model.Book;
+import java.math.BigDecimal;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -32,12 +33,21 @@ public class BookRepositoryTest {
         Long categoryId = 1L;
         Long expectedBookId = 1L;
         String expectedBookTitle = "Kobzar";
+        String expectedBookAuthor = "Shevchenko";
+        BigDecimal expectedPrice = BigDecimal.valueOf(50);
+        String expectedIsbn = "3ih3348wjew";
         //when
         List<Book> allByCategoriesId = bookRepository.findAllByCategoriesId(pageable, categoryId);
         Long actualId = allByCategoriesId.get(0).getId();
         String actualTitle = allByCategoriesId.get(0).getTitle();
+        BigDecimal actualPrice = allByCategoriesId.get(0).getPrice();
+        String actualAuthor = allByCategoriesId.get(0).getAuthor();
+        String actualIsbn = allByCategoriesId.get(0).getIsbn();
         //then
         Assertions.assertEquals(expectedBookId, actualId);
         Assertions.assertEquals(expectedBookTitle, actualTitle);
+        Assertions.assertEquals(expectedBookAuthor, actualAuthor);
+        Assertions.assertEquals(expectedPrice, actualPrice);
+        Assertions.assertEquals(expectedIsbn, actualIsbn);
     }
 }

@@ -46,52 +46,20 @@ public class BookServiceTest {
 
     @BeforeEach
     public void setUp() {
-        createBookRequestDto = new CreateBookRequestDto();
-        createBookRequestDto.setTitle("Kobzar");
-        createBookRequestDto.setAuthor("Shechenko");
-        createBookRequestDto.setPrice(BigDecimal.valueOf(50L));
-        createSecondBookRequestDto = new CreateBookRequestDto();
-        createSecondBookRequestDto.setTitle("Lisova Mavka");
-        createSecondBookRequestDto.setAuthor("Ukrainka");
-        createSecondBookRequestDto.setPrice(BigDecimal.valueOf(100L));
-        book = new Book();
-        book.setTitle("Kobzar");
-        book.setAuthor("Shechenko");
-        book.setPrice(BigDecimal.valueOf(50L));
-        secondBook = new Book();
-        secondBook.setTitle("Lisova Mavka");
-        secondBook.setAuthor("Ukrainka");
-        secondBook.setPrice(BigDecimal.valueOf(100L));
-        savedBook = new Book();
-        savedBook.setId(1L);
-        savedBook.setTitle("Kobzar");
-        savedBook.setAuthor("Shechenko");
-        savedBook.setPrice(BigDecimal.valueOf(50L));
-        savedSecondBook = new Book();
-        savedSecondBook.setId(2L);
-        savedSecondBook.setTitle("Lisova Mavka");
-        savedSecondBook.setAuthor("Ukrainka");
-        savedSecondBook.setPrice(BigDecimal.valueOf(100L));
-        expectedDto = new BookDto();
-        expectedDto.setId(1L);
-        expectedDto.setTitle("Kobzar");
-        expectedDto.setAuthor("Shechenko");
-        expectedDto.setPrice(BigDecimal.valueOf(50L));
-        secondExpectedDto = new BookDto();
-        secondExpectedDto.setId(2L);
-        secondExpectedDto.setTitle("Lisova Mavka");
-        secondExpectedDto.setAuthor("Ukrainka");
-        secondExpectedDto.setPrice(BigDecimal.valueOf(100L));
-        expectedDtoWithOutCategory = new BookDtoWithoutCategoryIds();
-        expectedDtoWithOutCategory.setId(1L);
-        expectedDtoWithOutCategory.setTitle("Kobzar");
-        expectedDtoWithOutCategory.setAuthor("Shechenko");
-        expectedDtoWithOutCategory.setPrice(BigDecimal.valueOf(50L));
-        expectedSecondDtoWithOutCategory = new BookDtoWithoutCategoryIds();
-        expectedSecondDtoWithOutCategory.setId(2L);
-        expectedSecondDtoWithOutCategory.setTitle("Lisova Mavka");
-        expectedSecondDtoWithOutCategory.setAuthor("Ukrainka");
-        expectedSecondDtoWithOutCategory.setPrice(BigDecimal.valueOf(100L));
+        createBookRequestDto = new CreateBookRequestDto("Kobzar", "Shechenko",
+                BigDecimal.valueOf(50L));
+        createSecondBookRequestDto = new CreateBookRequestDto("Lisova Mavka", "Ukrainka",
+                BigDecimal.valueOf(100L));
+        book = new Book("Kobzar", "Shechenko", BigDecimal.valueOf(50L));
+        secondBook = new Book("Lisova Mavka", "Ukrainka", BigDecimal.valueOf(100L));
+        savedBook = new Book(1L, "Kobzar", "Shechenko", BigDecimal.valueOf(50L));
+        savedSecondBook = new Book(2L, "Lisova Mavka", "Ukrainka", BigDecimal.valueOf(100L));
+        expectedDto = new BookDto(1L, "Kobzar", "Shechenko", BigDecimal.valueOf(50L));
+        secondExpectedDto = new BookDto(2L, "Lisova Mavka", "Ukrainka", BigDecimal.valueOf(100L));
+        expectedDtoWithOutCategory = new BookDtoWithoutCategoryIds(1L, "Shechenko",
+                "Kobzar",BigDecimal.valueOf(50L));
+        expectedSecondDtoWithOutCategory = new BookDtoWithoutCategoryIds(2L, "Ukrainka",
+                "Lisova Mavka", BigDecimal.valueOf(100L));
     }
 
     @Test
