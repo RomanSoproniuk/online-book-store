@@ -140,8 +140,9 @@ public class CategoryControllerTest {
         CategoryDto actual = objectMapper
                 .readValue(result.getResponse().getContentAsString(), CategoryDto.class);
         //then
-        Assertions.assertNotNull(actual.getId());
-        Assertions.assertEquals(actual.getId(), categoryId);
+        Long actualId = actual.getId();
+        Assertions.assertNotNull(actualId);
+        Assertions.assertEquals(actualId, categoryId);
         EqualsBuilder.reflectionEquals(expected, actual, "id");
     }
 
