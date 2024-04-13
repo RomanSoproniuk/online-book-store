@@ -2,7 +2,10 @@
 
 Welcome to our Bookstore Online Application! 📖
 
-This Java-based project aims to provide users with a seamless online shopping experience for books. Inspired by the growing trend of e-commerce and the love for literature, this application allows users to browse, purchase, and manage their book collection from the comfort of their homes.
+Have you ever wondered how important books are in our lives? We learn new information from books, we read them in order to visit places we have never been and take the place of the main character.
+Given the time of the latest technologies, we are very used to shopping on the Internet, because it is fast, affordable and simple.
+If you have a small book store and want to enter the online market, then this project is for you.
+It will be able to cover most of the basic needs of your store in the server part. If you are interested, please read the entire description and get more detailed information about it.
 
 ## Technologies Used
 
@@ -32,11 +35,11 @@ This Java-based project aims to provide users with a seamless online shopping ex
 
 ### Online Bookstore
 
-* As an administrator, you can perform certain operations on books.
-
-* Books are categorized for easy browsing.
-
-* Users can add books to their cart and proceed with the purchase in the online bookstore.
+* Depending on the level of access, the user can perform certain actions, in this application there are two roles: ADMIN and USER.
+  
+* If you use the application with an authorized ADMIN account, you have access to absolutely all endpoints of the application.
+  
+* If you use the application with the USER access level, the functions of your account are limited, you can read more about this by reading the documentation using Swagger
 
 ### Transmission
 
@@ -58,6 +61,8 @@ To set up the project, follow these steps:
 4.	Configure your Docker Compose file (`docker-compose.yml`) for database and application configuration.
 5.	Run docker-compose up to build and start the containers.
 6.	Liquibase will automatically handle database migrations.
+
+<img src="bookStoreDatebase.png" style="width:800px; max-width:100%"></img>
 
 ## Custom Data
 
